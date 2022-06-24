@@ -1,0 +1,11 @@
+<ng-container [formGroup]="formGroup">
+    <button class="action-button" (click)="onAddEmploye()">Add employe</button>
+    <input type="text" placeholder="Department name" formControlName="name">
+    <ng-container formArrayName="employers">
+        <ng-container *ngFor="let department of getEmployers(); let index = index">
+            <button class="action-button" (click)="onRemoveEmploye(index)">Remove employe</button>
+            <monorepo-employe-form [formControlName]="index" (removeEmploye)="onRemoveEmploye(index)">
+            </monorepo-employe-form>
+        </ng-container>
+    </ng-container>
+</ng-container>
