@@ -13,14 +13,13 @@ import { delay, Observable } from 'rxjs';
   selector: 'monorepo-company-owner-page',
   templateUrl: './company-owner-page.component.html',
   styleUrls: ['./company-owner-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompanyOwnerPageComponent implements OnInit {
-  isLoading = true;
   owner$!: Observable<CompanyOwnerModel>;
 
   constructor(
     private companyOwnerService: CompanyOwnerService,
-    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
