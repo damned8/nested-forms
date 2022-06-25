@@ -11,6 +11,10 @@
   max-width: 960px;
 }
 
+body {
+  background: #30313b;
+}
+
 input {
   display: block;
   border: unset;
@@ -28,8 +32,11 @@ fieldset {
   padding: 16px;
   margin: 16px;
   border: 1px solid gray;
+  border-radius: 4px;
+
 
   legend {
+    color: rgb(49, 46, 46);
     background-color: white;
     outline: 1px solid gray;
     padding: 4px;
