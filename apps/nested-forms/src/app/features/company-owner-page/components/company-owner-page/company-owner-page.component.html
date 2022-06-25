@@ -1,7 +1,5 @@
-<div>
-  <div *ngIf="(owner$ | async) as owner; else loader">
-    <monorepo-owner-form [owner]="owner"></monorepo-owner-form>
-  </div>
-</div>
+<ng-container *ngIf="(owner$ | async) as owner; else loader">
+  <monorepo-owner-form [owner]="owner"></monorepo-owner-form>
+</ng-container>
 
 <ng-template #loader>loading...</ng-template>

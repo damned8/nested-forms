@@ -6,6 +6,11 @@
   margin: 0;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
 input {
   display: block;
   border: unset;
@@ -14,24 +19,34 @@ input {
   border-radius: 4px;
   margin: 4px;
   &:focus-visible {
-    outline: 1px solid skyblue;
+    outline: 2px solid skyblue;
   }
 }
 
 fieldset {
+  background-color: whitesmoke;
   padding: 16px;
   margin: 16px;
-}
+  border: 1px solid gray;
 
-.container {
-  margin: 0 auto;
-  max-width: 960px;
+  legend {
+    background-color: white;
+    outline: 1px solid gray;
+    padding: 4px;
+  }
 }
 
 button {
+  cursor: pointer;
+  background-color: rgb(34, 93, 116);
+  color: white;
+  border: unset;
+  outline: 1px solid gray;
+
   padding: 4px;
   margin: 4px;
-  &:focus-visible {
-    outline: 1px solid skyblue;
+  &:focus-visible, &:hover {
+    color: skyblue;
+    outline: 2px solid skyblue;
   }
 }
