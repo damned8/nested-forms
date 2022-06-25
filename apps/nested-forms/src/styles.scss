@@ -11,8 +11,28 @@
   max-width: 960px;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(49, 46, 46);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: whitesmoke;
+}
+
 body {
   background: #30313b;
+  overflow-y: scroll;
 }
 
 input {
@@ -34,7 +54,6 @@ fieldset {
   border: 1px solid gray;
   border-radius: 4px;
 
-
   legend {
     color: rgb(49, 46, 46);
     background-color: white;
@@ -52,7 +71,8 @@ button {
 
   padding: 4px;
   margin: 4px;
-  &:focus-visible, &:hover {
+  &:focus-visible,
+  &:hover {
     color: skyblue;
     outline: 2px solid skyblue;
   }
