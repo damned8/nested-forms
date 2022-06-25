@@ -4,7 +4,7 @@
   <ng-container formArrayName="employers">
     <ng-container *ngFor="let department of getEmployers(); let index = index">
       <fieldset>
-        <legend>Employe name</legend>
+        <legend>Employe</legend>
         <button class="action-button" (click)="onRemoveEmploye(index)">
           Remove employe
         </button>

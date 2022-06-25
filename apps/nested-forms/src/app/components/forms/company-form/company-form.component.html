@@ -6,7 +6,7 @@
   <ng-container formArrayName="departments">
     <ng-container *ngFor="let department of getDepartments(); let index = index">
       <fieldset>
-        <legend>Department name</legend>
+        <legend>Department</legend>
 
         <button class="action-button" (click)="onRemoveDepartment(index)">
           Remove department
