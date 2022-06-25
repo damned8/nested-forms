@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngIf="!isLoading; else loader">
+    <monorepo-owner-form [owner]="owner"></monorepo-owner-form>
+  </div>
+</div>
+
+<ng-template #loader>loading...</ng-template>

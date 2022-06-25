@@ -2,7 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "ng-rx-test": "apps/ng-rx-test",
+    "nested-forms": "apps/nested-forms",
     "ng-rx-test-e2e": "apps/ng-rx-test-e2e"
   }
 }

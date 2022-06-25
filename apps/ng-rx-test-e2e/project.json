@@ -7,11 +7,11 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/ng-rx-test-e2e/cypress.json",
-        "devServerTarget": "ng-rx-test:serve:development"
+        "devServerTarget": "nested-forms:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "ng-rx-test:serve:production"
+          "devServerTarget": "nested-forms:serve:production"
         }
       }
     },
@@ -24,5 +24,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["ng-rx-test"]
+  "implicitDependencies": ["nested-forms"]
 }
