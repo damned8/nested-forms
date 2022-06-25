@@ -2,19 +2,22 @@
   {{ formGroup.value | json }}
 </div>
 <ng-container [formGroup]="formGroup">
-  <div>
+  <fieldset>
+    <legend>Company owner</legend>
+
     <button class="action-button" (click)="onSaveForm()">Show json</button>
-  </div>
-  <input type="text" placeholder="Owner name" formControlName="name" />
-  <div>
+    <input type="text" placeholder="Owner name" formControlName="name" />
     <button class="action-button" (click)="onAddCompany()">Add company</button>
-  </div>
+  </fieldset>
   <ng-container formArrayName="companys">
     <ng-container *ngFor="let company of getCompanys(); let index = index">
-      <button class="action-button" (click)="onRemoveCompany(index)">
-        Remove company
-      </button>
-      <monorepo-company-form [formControlName]="index"></monorepo-company-form>
+      <fieldset>
+        <legend>Company</legend>
+        <button class="action-button" (click)="onRemoveCompany(index)">
+          Remove company
+        </button>
+        <monorepo-company-form [formControlName]="index"></monorepo-company-form>
+      </fieldset>
     </ng-container>
   </ng-container>
 </ng-container>

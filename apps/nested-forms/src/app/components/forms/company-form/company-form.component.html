@@ -4,15 +4,15 @@
   </button>
   <input type="text" placeholder="Company name" formControlName="name" />
   <ng-container formArrayName="departments">
-    <ng-container
-      *ngFor="let department of getDepartments(); let index = index"
-    >
-      <button class="action-button" (click)="onRemoveDepartment(index)">
-        Remove department
-      </button>
-      <monorepo-department-form
-        [formControlName]="index"
-      ></monorepo-department-form>
+    <ng-container *ngFor="let department of getDepartments(); let index = index">
+      <fieldset>
+        <legend>Department name</legend>
+
+        <button class="action-button" (click)="onRemoveDepartment(index)">
+          Remove department
+        </button>
+        <monorepo-department-form [formControlName]="index"></monorepo-department-form>
+      </fieldset>
     </ng-container>
   </ng-container>
 </ng-container>
