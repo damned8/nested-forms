@@ -16,5 +16,6 @@ import { OwnerFormModule } from '../../components/forms/owner-form/owner-form.mo
     CompanyOwnerPageRoutingModule,
   ],
   providers: [CompanyOwnerService],
+  exports: [CompanyOwnerPageComponent]
 })
 export class CompanyOwnerPageModule {}

@@ -7,17 +7,16 @@ import {
 } from '@angular/core';
 import { CompanyOwnerModel } from 'apps/nested-forms/src/app/models/company-owner.model';
 import { CompanyOwnerService } from 'apps/nested-forms/src/app/services/company-owner-api/company-owner-api.service';
-import { delay } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 
 @Component({
   selector: 'monorepo-company-owner-page',
   templateUrl: './company-owner-page.component.html',
   styleUrls: ['./company-owner-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompanyOwnerPageComponent implements OnInit {
   isLoading = true;
-  owner!: CompanyOwnerModel;
+  owner$!: Observable<CompanyOwnerModel>;
 
   constructor(
     private companyOwnerService: CompanyOwnerService,
@@ -25,13 +24,8 @@ export class CompanyOwnerPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.companyOwnerService
+    this.owner$ =  this.companyOwnerService
       .getOne({ id: '1' })
-      .pipe(delay(0))
-      .subscribe((owner) => {
-        this.owner = owner;
-        this.isLoading = false;
-        this.cdr.markForCheck();
-      });
+      .pipe(delay(2000))
   }
 }

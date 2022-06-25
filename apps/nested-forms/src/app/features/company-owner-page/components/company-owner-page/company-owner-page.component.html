@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="!isLoading; else loader">
+  <div *ngIf="(owner$ | async) as owner; else loader">
     <monorepo-owner-form [owner]="owner"></monorepo-owner-form>
   </div>
 </div>

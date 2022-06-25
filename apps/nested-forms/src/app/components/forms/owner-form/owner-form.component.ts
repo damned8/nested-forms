@@ -32,21 +32,21 @@ export class OwnerFormComponent extends FormControlValueAccessorAdapter {
     super();
   }
 
-  public onSaveForm(): void {
+  onSaveForm(): void {
     this.isShowJson = !this.isShowJson;
   }
 
-  public onAddCompany(): void {
+  onAddCompany(): void {
     (this.formGroup.controls.companys as unknown as FormArray).push(
       new FormControl({ name: '', departments: [] })
     );
   }
 
-  public onRemoveCompany(index: number): void {
+  onRemoveCompany(index: number): void {
     (this.formGroup.controls.companys as unknown as FormArray).removeAt(index);
   }
 
-  public getCompanys(): AbstractControl[] {
+  getCompanys(): AbstractControl[] {
     return (this.formGroup.controls.companys as unknown as FormArray).controls;
   }
 }
