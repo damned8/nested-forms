@@ -3,7 +3,6 @@ import {
   FormGroup,
   FormControl,
   FormArray,
-  AbstractControl,
 } from '@angular/forms';
 import { FormControlValueAccessorAdapter } from '../../../common/classes/form-control-value-accessor-adapter';
 import { CompanyOwnerModel } from '../../../models/company-owner.model';
@@ -17,7 +16,7 @@ import { CompanyOwnerModel } from '../../../models/company-owner.model';
 export class OwnerFormComponent extends FormControlValueAccessorAdapter {
   @Input() set owner(owner: CompanyOwnerModel) {
     owner.companys.forEach(() => {
-      this.getCompanys().push(new FormControl());
+      this.companys.push(new FormControl());
     });
     this.formGroup.patchValue(owner as never);
   }
@@ -25,6 +24,9 @@ export class OwnerFormComponent extends FormControlValueAccessorAdapter {
     name: new FormControl(),
     companys: new FormArray([]),
   });
+  public get companys(): FormArray {
+    return this.formGroup.controls.companys as unknown as FormArray;
+  }
 
   public isShowJson = false;
 
@@ -32,21 +34,15 @@ export class OwnerFormComponent extends FormControlValueAccessorAdapter {
     super();
   }
 
-  onSaveForm(): void {
+  onShowJson(): void {
     this.isShowJson = !this.isShowJson;
   }
 
   onAddCompany(): void {
-    (this.formGroup.controls.companys as unknown as FormArray).push(
-      new FormControl({ name: '', departments: [] })
-    );
+    this.companys.push(new FormControl({ name: '', departments: [] }));
   }
 
   onRemoveCompany(index: number): void {
-    (this.formGroup.controls.companys as unknown as FormArray).removeAt(index);
-  }
-
-  getCompanys(): AbstractControl[] {
-    return (this.formGroup.controls.companys as unknown as FormArray).controls;
+    this.companys.removeAt(index);
   }
 }

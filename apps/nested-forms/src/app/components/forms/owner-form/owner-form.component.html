@@ -4,16 +4,15 @@
 <ng-container [formGroup]="formGroup">
   <fieldset>
     <legend>Company owner</legend>
-
-    <button class="action-button" (click)="onSaveForm()">Show json</button>
+    <button (click)="onShowJson()">Show json</button>
     <input type="text" placeholder="Owner name" formControlName="name" />
-    <button class="action-button" (click)="onAddCompany()">Add company</button>
+    <button (click)="onAddCompany()">Add company</button>
   </fieldset>
   <ng-container formArrayName="companys">
-    <ng-container *ngFor="let company of getCompanys(); let index = index">
+    <ng-container *ngFor="let company of companys.controls; let index = index">
       <fieldset>
         <legend>Company</legend>
-        <button class="action-button" (click)="onRemoveCompany(index)">
+        <button (click)="onRemoveCompany(index)">
           Remove company
         </button>
         <monorepo-company-form [formControlName]="index"></monorepo-company-form>

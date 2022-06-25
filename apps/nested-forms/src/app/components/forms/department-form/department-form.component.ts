@@ -3,7 +3,6 @@ import {
   NG_VALUE_ACCESSOR,
   NG_VALIDATORS,
   FormGroup,
-  AbstractControl,
   FormArray,
   FormControl,
 } from '@angular/forms';
@@ -34,24 +33,21 @@ export class DepartmentFormComponent extends FormControlValueAccessorAdapter {
     employers: new FormArray([]),
   });
   override beforeWriteValue = (val: DepartmentModel) => {
-    val.employers.forEach(() => this.getEmployers().push(new FormControl()));
+    val.employers.forEach(() => this.employers.push(new FormControl()));
   };
+  public get employers(): FormArray {
+    return this.formGroup.controls.employers as unknown as FormArray;
+  }
 
   constructor() {
     super();
   }
 
   onAddEmploye(): void {
-    (this.formGroup.controls.employers as unknown as FormArray).push(
-      new FormControl({ name: '' })
-    );
+    this.employers.push(new FormControl({ name: '' }));
   }
 
   onRemoveEmploye(index: number): void {
-    (this.formGroup.controls.employers as unknown as FormArray).removeAt(index);
-  }
-
-  getEmployers(): AbstractControl[] {
-    return (this.formGroup.controls.employers as unknown as FormArray).controls;
+    this.employers.removeAt(index);
   }
 }

@@ -5,7 +5,6 @@ import {
   EventEmitter,
 } from '@angular/core';
 import {
-  AbstractControl,
   FormArray,
   FormControl,
   FormGroup,
@@ -40,29 +39,21 @@ export class CompanyFormComponent extends FormControlValueAccessorAdapter {
     departments: new FormArray([]),
   });
   override beforeWriteValue = (val: CompanyModel) => {
-    val.departments.forEach(() =>
-      this.getDepartments().push(new FormControl())
-    );
+    val.departments.forEach(() => this.departments.push(new FormControl()));
   };
+  public get departments(): FormArray {
+    return this.formGroup.controls.departments as unknown as FormArray;
+  }
 
   constructor() {
     super();
   }
 
   onAddDepartment(): void {
-    (this.formGroup.controls.departments as unknown as FormArray).push(
-      new FormControl({ name: '', employers: [] })
-    );
+    this.departments.push(new FormControl({ name: '', employers: [] }));
   }
 
   onRemoveDepartment(index: number): void {
-    (this.formGroup.controls.departments as unknown as FormArray).removeAt(
-      index
-    );
-  }
-
-  getDepartments(): AbstractControl[] {
-    return (this.formGroup.controls.departments as unknown as FormArray)
-      .controls;
+    this.departments.removeAt(index);
   }
 }
